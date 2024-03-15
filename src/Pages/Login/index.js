@@ -61,7 +61,7 @@ const Login = () => {
       setLoading(false); // Ẩn spinner nếu có lỗi
       return;
     }
-    loginUser(newUser, dispatch, navigate, handleLoginError, setLoading);
+    loginUser(newUser, dispatch, navigate, handleLoginError);
 
     // Lưu thông tin tài khoản nếu người dùng chọn "Remember Me"
     if (rememberMe) {
@@ -75,6 +75,7 @@ const Login = () => {
 
   const handleLoginError = (error) => {
     setErrors({ message: error.message });
+    setLoading(false); //
   };
 
   const requestLocation = () => {
@@ -131,13 +132,13 @@ const Login = () => {
               />
               Remember me
             </label>
-            <a href="#">Forgot password?</a>
+            <a href="#"></a>
           </div>
           <button type="submit">Login</button>
           <div className={cx("register-link")}>
-            <p>
+            {/* <p>
               Don't have an account? <a href="#">Register</a>
-            </p>
+            </p> */}
           </div>
           {loading && (
             <div className={cx("spinner-container")}>
